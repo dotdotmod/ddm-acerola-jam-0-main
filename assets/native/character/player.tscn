@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/native/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/native/scripts/camera_system.gd" type="Script" id=2]
+[ext_resource path="res://assets/import/images/ui/map_mask.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -9,6 +10,37 @@ radius = 0.5
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.5
 radial_segments = 32
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform sampler2D mask;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	
+	vec2 uv2 = UV;
+	uv2.y = 1.0 - uv2.y;
+	COLOR.a = texture(mask, uv2).r;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/mask = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+
+[sub_resource type="CylinderMesh" id=3]
+material = SubResource( 4 )
+height = 1.0
+radial_segments = 32
+
+[sub_resource type="Theme" id=7]
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+Label/constants/shadow_as_outline = 2
 
 [node name="player" type="KinematicBody" groups=["Player"]]
 script = ExtResource( 1 )
@@ -33,5 +65,67 @@ spring_length = 5.0
 margin = 0.5
 
 [node name="Camera" type="Camera" parent="camera_system/camera_pivot"]
+cull_mask = 1048573
 near = 0.04
 far = 8192.0
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="minimap" type="Control" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -280.0
+margin_top = -284.0
+margin_right = -39.0
+margin_bottom = -45.0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="UI/minimap"]
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Viewport" type="Viewport" parent="UI/minimap/ViewportContainer"]
+size = Vector2( 240, 240 )
+handle_input_locally = false
+fxaa = true
+render_target_update_mode = 3
+
+[node name="minimap elements" type="Spatial" parent="UI/minimap/ViewportContainer/Viewport"]
+
+[node name="minimap camera" type="Camera" parent="UI/minimap/ViewportContainer/Viewport/minimap elements"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0 )
+cull_mask = 2
+projection = 1
+size = 30.0
+
+[node name="MeshInstance" type="MeshInstance" parent="UI/minimap/ViewportContainer/Viewport/minimap elements"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.59736, 0 )
+layers = 2
+cast_shadow = 0
+mesh = SubResource( 3 )
+
+[node name="guide" type="Control" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -47.0
+margin_right = 765.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/guide"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/guide/HBoxContainer"]
+margin_right = 10.0
+margin_bottom = 47.0
+
+[node name="Label" type="Label" parent="UI/guide/HBoxContainer"]
+margin_left = 4.0
+margin_top = 16.0
+margin_right = 220.0
+margin_bottom = 30.0
+theme = SubResource( 7 )
+text = "Uhhhhhhhhhhhhhh yeah text cool"

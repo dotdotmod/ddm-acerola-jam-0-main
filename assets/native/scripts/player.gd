@@ -11,7 +11,8 @@ var gravity_calc : float
 onready var camera = $camera_system/camera_pivot/Camera
 onready var camera_core = $camera_system
 onready var model_core = $model_core
-
+onready var minimap_elements = $"UI/minimap/ViewportContainer/Viewport/minimap elements"
+onready var minimap_camera_element = $"UI/minimap/ViewportContainer/Viewport/minimap elements/minimap camera"
 
 func _physics_process(delta):
 	
@@ -48,5 +49,9 @@ func _physics_process(delta):
 	#Move and slide
 	move_and_slide(velocity, Vector3.UP)
 
+func _process(delta):
+	#Minimap stuff
+	minimap_elements.global_translation = global_translation
+	minimap_camera_element.global_rotation.y = camera.global_rotation.y
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/native/character/player.tscn" type="PackedScene" id=2]
@@ -21,6 +21,25 @@ size = Vector3( 1, 4, 4 )
 
 [sub_resource type="ConcavePolygonShape" id=5]
 data = PoolVector3Array( -0.5, 2, 2, 0.5, 2, 2, -0.5, -2, 2, 0.5, 2, 2, 0.5, -2, 2, -0.5, -2, 2, 0.5, 2, -2, -0.5, 2, -2, 0.5, -2, -2, -0.5, 2, -2, -0.5, -2, -2, 0.5, -2, -2, 0.5, 2, 2, 0.5, 2, -2, 0.5, -2, 2, 0.5, 2, -2, 0.5, -2, -2, 0.5, -2, 2, -0.5, 2, -2, -0.5, 2, 2, -0.5, -2, -2, -0.5, 2, 2, -0.5, -2, 2, -0.5, -2, -2, 0.5, 2, 2, -0.5, 2, 2, 0.5, 2, -2, -0.5, 2, 2, -0.5, 2, -2, 0.5, 2, -2, -0.5, -2, 2, 0.5, -2, 2, -0.5, -2, -2, 0.5, -2, 2, 0.5, -2, -2, -0.5, -2, -2 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_unshaded = true
+params_cull_mode = 2
+albedo_color = Color( 0.054902, 0.054902, 0.054902, 1 )
+
+[sub_resource type="QuadMesh" id=9]
+material = SubResource( 8 )
+size = Vector2( 200, 200 )
+
+[sub_resource type="SpatialMaterial" id=10]
+flags_unshaded = true
+albedo_color = Color( 0.176471, 0.941176, 0, 1 )
+
+[sub_resource type="CylinderMesh" id=11]
+material = SubResource( 10 )
+top_radius = 0.85
+bottom_radius = 0.85
+radial_segments = 32
 
 [sub_resource type="ProceduralSky" id=7]
 ground_bottom_color = Color( 0.121569, 0.278431, 0.439216, 1 )
@@ -105,14 +124,29 @@ shape = SubResource( 5 )
 
 [node name="level assets" type="Spatial" parent="."]
 
+[node name="garbage_can" parent="level assets" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77068, 0.5, -7.72329 )
+
+[node name="minimap elements" type="Spatial" parent="."]
+
+[node name="bottom" type="MeshInstance" parent="minimap elements"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -29.8199, 0 )
+layers = 2
+cast_shadow = 0
+mesh = SubResource( 9 )
+
+[node name="MeshInstance" type="MeshInstance" parent="minimap elements"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75449, 1.1243, -7.73532 )
+layers = 2
+cast_shadow = 0
+mesh = SubResource( 11 )
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.86314, 0.399615, -0.308702, 0, 0.611334, 0.791373, 0.504965, -0.683066, 0.527667, 0, 0, 0 )
 light_energy = 0.9
 shadow_enabled = true
 directional_shadow_blend_splits = true
+directional_shadow_max_distance = 70.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
-
-[node name="garbage_can" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77068, 0.5, -7.72329 )
