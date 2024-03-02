@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/native/character/player.tscn" type="PackedScene" id=2]
@@ -21,6 +21,17 @@ size = Vector3( 1, 4, 4 )
 [sub_resource type="ConcavePolygonShape" id=5]
 data = PoolVector3Array( -0.5, 2, 2, 0.5, 2, 2, -0.5, -2, 2, 0.5, 2, 2, 0.5, -2, 2, -0.5, -2, 2, 0.5, 2, -2, -0.5, 2, -2, 0.5, -2, -2, -0.5, 2, -2, -0.5, -2, -2, 0.5, -2, -2, 0.5, 2, 2, 0.5, 2, -2, 0.5, -2, 2, 0.5, 2, -2, 0.5, -2, -2, 0.5, -2, 2, -0.5, 2, -2, -0.5, 2, 2, -0.5, -2, -2, -0.5, 2, 2, -0.5, -2, 2, -0.5, -2, -2, 0.5, 2, 2, -0.5, 2, 2, 0.5, 2, -2, -0.5, 2, 2, -0.5, 2, -2, 0.5, 2, -2, -0.5, -2, 2, 0.5, -2, 2, -0.5, -2, -2, 0.5, -2, 2, 0.5, -2, -2, -0.5, -2, -2 )
 
+[sub_resource type="ProceduralSky" id=7]
+ground_bottom_color = Color( 0.121569, 0.278431, 0.439216, 1 )
+ground_horizon_color = Color( 0.309804, 0.376471, 0.411765, 1 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 7 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.3
+ambient_light_sky_contribution = 0.5
+
 [node name="test_stage" type="Spatial"]
 
 [node name="player" parent="." instance=ExtResource( 2 )]
@@ -42,7 +53,7 @@ shape = SubResource( 3 )
 [node name="level etc" type="Spatial" parent="level geometry"]
 
 [node name="MeshInstance2" type="MeshInstance" parent="level geometry/level etc"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11337, 2.42527, -1.14653 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11337, 1.98686, -1.14653 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../../level terrain")
 
@@ -52,7 +63,7 @@ skeleton = NodePath("../../level terrain")
 shape = SubResource( 5 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="level geometry/level etc"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57864, 2.42527, -1.14653 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57864, 1.98686, -1.14653 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../../level terrain")
 
@@ -62,7 +73,7 @@ skeleton = NodePath("../../level terrain")
 shape = SubResource( 5 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="level geometry/level etc"]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -6.32964, 4.80968, -1.14653 )
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -6.32964, 4.37128, -1.14653 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../../level terrain")
 
@@ -70,3 +81,21 @@ skeleton = NodePath("../../level terrain")
 
 [node name="CollisionShape" type="CollisionShape" parent="level geometry/level etc/MeshInstance4/StaticBody"]
 shape = SubResource( 5 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="level geometry/level etc"]
+transform = Transform( 0.400653, -0.91623, 0, 0.91623, 0.400653, 0, 0, 0, 1, -11.8133, 0.816722, 5.24299 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../../level terrain")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level etc/MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level etc/MeshInstance5/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.86314, 0.399615, -0.308702, 0, 0.611334, 0.791373, 0.504965, -0.683066, 0.527667, 0, 0, 0 )
+light_energy = 0.9
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )

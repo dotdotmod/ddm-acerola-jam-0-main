@@ -26,7 +26,7 @@ skeleton = NodePath("../..")
 [node name="camera_system" type="Spatial" parent="."]
 
 [node name="SpringArm" type="SpringArm" parent="camera_system"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447097, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862044, 0 )
 spring_length = 5.0
 margin = 0.5
 
