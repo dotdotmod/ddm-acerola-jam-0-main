@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/native/character/player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 2, 2, 2 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 20, 1, 20 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 1, 4, 4 )
+
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( -0.5, 2, 2, 0.5, 2, 2, -0.5, -2, 2, 0.5, 2, 2, 0.5, -2, 2, -0.5, -2, 2, 0.5, 2, -2, -0.5, 2, -2, 0.5, -2, -2, -0.5, 2, -2, -0.5, -2, -2, 0.5, -2, -2, 0.5, 2, 2, 0.5, 2, -2, 0.5, -2, 2, 0.5, 2, -2, 0.5, -2, -2, 0.5, -2, 2, -0.5, 2, -2, -0.5, 2, 2, -0.5, -2, -2, -0.5, 2, 2, -0.5, -2, 2, -0.5, -2, -2, 0.5, 2, 2, -0.5, 2, 2, 0.5, 2, -2, -0.5, 2, 2, -0.5, 2, -2, 0.5, 2, -2, -0.5, -2, 2, 0.5, -2, 2, -0.5, -2, -2, 0.5, -2, 2, 0.5, -2, -2, -0.5, -2, -2 )
+
+[node name="test_stage" type="Spatial"]
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67, 0 )
+
+[node name="level geometry" type="Spatial" parent="."]
+
+[node name="level terrain" type="Spatial" parent="level geometry"]
+
+[node name="MeshInstance" type="MeshInstance" parent="level geometry/level terrain"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level terrain/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level terrain/MeshInstance/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="level etc" type="Spatial" parent="level geometry"]
+
+[node name="MeshInstance2" type="MeshInstance" parent="level geometry/level etc"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11337, 2.42527, -1.14653 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../../level terrain")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level etc/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level etc/MeshInstance2/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="level geometry/level etc"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57864, 2.42527, -1.14653 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../../level terrain")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level etc/MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level etc/MeshInstance3/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="level geometry/level etc"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -6.32964, 4.80968, -1.14653 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../../level terrain")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level etc/MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level etc/MeshInstance4/StaticBody"]
+shape = SubResource( 5 )
