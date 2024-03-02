@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/native/character/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/native/drag_n_drops/garbage_can.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -50,6 +51,16 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape" type="CollisionShape" parent="level geometry/level terrain/MeshInstance/StaticBody"]
 shape = SubResource( 3 )
 
+[node name="MeshInstance2" type="MeshInstance" parent="level geometry/level terrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4414, 1.57418, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level terrain/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level terrain/MeshInstance2/StaticBody"]
+shape = SubResource( 3 )
+
 [node name="level etc" type="Spatial" parent="level geometry"]
 
 [node name="MeshInstance2" type="MeshInstance" parent="level geometry/level etc"]
@@ -73,7 +84,7 @@ skeleton = NodePath("../../level terrain")
 shape = SubResource( 5 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="level geometry/level etc"]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -6.32964, 4.37128, -1.14653 )
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -6.32964, 3.96928, -1.14653 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../../level terrain")
 
@@ -92,10 +103,16 @@ skeleton = NodePath("../../level terrain")
 [node name="CollisionShape" type="CollisionShape" parent="level geometry/level etc/MeshInstance5/StaticBody"]
 shape = SubResource( 5 )
 
+[node name="level assets" type="Spatial" parent="."]
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.86314, 0.399615, -0.308702, 0, 0.611334, 0.791373, 0.504965, -0.683066, 0.527667, 0, 0, 0 )
 light_energy = 0.9
 shadow_enabled = true
+directional_shadow_blend_splits = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
+
+[node name="garbage_can" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77068, 0.5, -7.72329 )

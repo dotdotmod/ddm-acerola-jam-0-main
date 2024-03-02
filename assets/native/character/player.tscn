@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/native/scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://assets/native/scripts/camera_system.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -9,7 +10,7 @@ radius = 0.5
 radius = 0.5
 radial_segments = 32
 
-[node name="player" type="KinematicBody"]
+[node name="player" type="KinematicBody" groups=["Player"]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -24,12 +25,13 @@ mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
 [node name="camera_system" type="Spatial" parent="."]
+script = ExtResource( 2 )
 
-[node name="SpringArm" type="SpringArm" parent="camera_system"]
+[node name="camera_pivot" type="SpringArm" parent="camera_system"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862044, 0 )
 spring_length = 5.0
 margin = 0.5
 
-[node name="Camera" type="Camera" parent="camera_system/SpringArm"]
+[node name="Camera" type="Camera" parent="camera_system/camera_pivot"]
 near = 0.04
 far = 8192.0
