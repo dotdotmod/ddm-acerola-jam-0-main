@@ -56,6 +56,13 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
+[node name="raycasts" type="Spatial" parent="model_core"]
+
+[node name="interact" type="RayCast" parent="model_core/raycasts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.453962, -0.497042 )
+enabled = true
+cast_to = Vector3( 0, -1.5, -1.25 )
+
 [node name="camera_system" type="Spatial" parent="."]
 script = ExtResource( 2 )
 

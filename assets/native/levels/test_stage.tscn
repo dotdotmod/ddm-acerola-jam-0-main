@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/native/character/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/native/drag_n_drops/garbage_can.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/native/drag_n_drops/door.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -80,6 +81,16 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape" type="CollisionShape" parent="level geometry/level terrain/MeshInstance2/StaticBody"]
 shape = SubResource( 3 )
 
+[node name="MeshInstance3" type="MeshInstance" parent="level geometry/level terrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4414, 1.57418, -23 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level terrain/MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level terrain/MeshInstance3/StaticBody"]
+shape = SubResource( 3 )
+
 [node name="level etc" type="Spatial" parent="level geometry"]
 
 [node name="MeshInstance2" type="MeshInstance" parent="level geometry/level etc"]
@@ -110,6 +121,16 @@ skeleton = NodePath("../../level terrain")
 [node name="StaticBody" type="StaticBody" parent="level geometry/level etc/MeshInstance4"]
 
 [node name="CollisionShape" type="CollisionShape" parent="level geometry/level etc/MeshInstance4/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="level geometry/level etc"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -21.3296, 1.52317, -11.1465 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../../level terrain")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level etc/MeshInstance6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level etc/MeshInstance6/StaticBody"]
 shape = SubResource( 5 )
 
 [node name="MeshInstance5" type="MeshInstance" parent="level geometry/level etc"]
@@ -150,3 +171,6 @@ directional_shadow_max_distance = 70.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
+
+[node name="Spatial" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.3336, 4.00958, -11.4791 )
