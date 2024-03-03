@@ -37,8 +37,8 @@ albedo_color = Color( 0.176471, 0.941176, 0, 1 )
 
 [sub_resource type="CylinderMesh" id=11]
 material = SubResource( 10 )
-top_radius = 0.85
-bottom_radius = 0.85
+top_radius = 0.7
+bottom_radius = 0.7
 radial_segments = 32
 
 [sub_resource type="ProceduralSky" id=7]

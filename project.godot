@@ -14,6 +14,10 @@ config/name="Acerola Jam 0 Submission"
 run/main_scene="res://assets/native/levels/test_stage.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
