@@ -30,7 +30,7 @@ func _process(delta):
 		"Manual":
 			camera.set_as_toplevel(false)
 			cam_pivot.spring_length = 5
-			v = lerp(v, 0, 0.0125)
+			v = lerp(v, -10, 0.01)
 			cam_pivot.rotation_degrees.y = lerp(cam_pivot.rotation_degrees.y, h, 0.5)
 			cam_pivot.rotation_degrees.x = lerp(cam_pivot.rotation_degrees.x, v, 0.5)
 

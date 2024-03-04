@@ -62,6 +62,7 @@ skeleton = NodePath("../..")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.453962, -0.497042 )
 enabled = true
 cast_to = Vector3( 0, -1.5, -1.25 )
+collide_with_areas = true
 
 [node name="camera_system" type="Spatial" parent="."]
 script = ExtResource( 2 )
@@ -76,11 +77,13 @@ cull_mask = 1048573
 near = 0.04
 far = 8192.0
 
-[node name="UI" type="Control" parent="."]
+[node name="UI_elements" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UI_elements"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="minimap" type="Control" parent="UI"]
+[node name="minimap" type="Control" parent="UI_elements/UI"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -90,53 +93,63 @@ margin_top = -284.0
 margin_right = -39.0
 margin_bottom = -45.0
 
-[node name="ViewportContainer" type="ViewportContainer" parent="UI/minimap"]
+[node name="ViewportContainer" type="ViewportContainer" parent="UI_elements/UI/minimap"]
 material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Viewport" type="Viewport" parent="UI/minimap/ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="UI_elements/UI/minimap/ViewportContainer"]
 size = Vector2( 240, 240 )
 handle_input_locally = false
 fxaa = true
 render_target_update_mode = 3
 
-[node name="minimap elements" type="Spatial" parent="UI/minimap/ViewportContainer/Viewport"]
+[node name="minimap elements" type="Spatial" parent="UI_elements/UI/minimap/ViewportContainer/Viewport"]
 
-[node name="minimap camera" type="Camera" parent="UI/minimap/ViewportContainer/Viewport/minimap elements"]
+[node name="minimap camera" type="Camera" parent="UI_elements/UI/minimap/ViewportContainer/Viewport/minimap elements"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0 )
 cull_mask = 2
 projection = 1
 size = 30.0
 
-[node name="MeshInstance" type="MeshInstance" parent="UI/minimap/ViewportContainer/Viewport/minimap elements"]
+[node name="MeshInstance" type="MeshInstance" parent="UI_elements/UI/minimap/ViewportContainer/Viewport/minimap elements"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.59736, 0 )
 layers = 2
 cast_shadow = 0
 mesh = SubResource( 3 )
 
-[node name="guide" type="Control" parent="UI"]
+[node name="guide" type="Control" parent="UI_elements/UI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -47.0
 margin_right = 765.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/guide"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI_elements/UI/guide"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="UI/guide/HBoxContainer"]
+[node name="Label" type="Label" parent="UI_elements/UI/guide/HBoxContainer"]
 margin_top = 16.0
 margin_right = 216.0
 margin_bottom = 30.0
 theme = SubResource( 7 )
 text = "Uhhhhhhhhhhhhhh yeah text cool"
 
-[node name="textbox" type="Control" parent="UI"]
+[node name="textbox" type="Control" parent="UI_elements/UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 268.0
 
-[node name="interact" type="Control" parent="UI"]
+[node name="TextureRect" type="TextureRect" parent="UI_elements/UI/textbox"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 168.0
+margin_top = -203.0
+margin_right = -29.0
+margin_bottom = -22.0
+
+[node name="interact" type="Control" parent="UI_elements/UI"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -144,3 +157,5 @@ anchor_bottom = 1.0
 margin_left = -20.0
 margin_top = -40.0
 margin_right = 20.0
+
+[node name="Pause_screen" type="CanvasLayer" parent="."]

@@ -11,8 +11,8 @@ var gravity_calc : float
 onready var camera = $camera_system/camera_pivot/Camera
 onready var camera_core = $camera_system
 onready var model_core = $model_core
-onready var minimap_elements = $"UI/minimap/ViewportContainer/Viewport/minimap elements"
-onready var minimap_camera_element = $"UI/minimap/ViewportContainer/Viewport/minimap elements/minimap camera"
+onready var minimap_elements = $"UI_elements/UI/minimap/ViewportContainer/Viewport/minimap elements"
+onready var minimap_camera_element = $"UI_elements/UI/minimap/ViewportContainer/Viewport/minimap elements/minimap camera"
 onready var interact_ray = $model_core/raycasts/interact
 
 func _physics_process(delta):
@@ -66,5 +66,8 @@ func _process(delta):
 	#Minimap stuff
 	minimap_elements.global_translation = global_translation
 	minimap_camera_element.global_rotation.y = camera.global_rotation.y
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 

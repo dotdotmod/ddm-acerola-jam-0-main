@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/native/character/player.tscn" type="PackedScene" id=2]
@@ -22,6 +22,28 @@ size = Vector3( 1, 4, 4 )
 
 [sub_resource type="ConcavePolygonShape" id=5]
 data = PoolVector3Array( -0.5, 2, 2, 0.5, 2, 2, -0.5, -2, 2, 0.5, 2, 2, 0.5, -2, 2, -0.5, -2, 2, 0.5, 2, -2, -0.5, 2, -2, 0.5, -2, -2, -0.5, 2, -2, -0.5, -2, -2, 0.5, -2, -2, 0.5, 2, 2, 0.5, 2, -2, 0.5, -2, 2, 0.5, 2, -2, 0.5, -2, -2, 0.5, -2, 2, -0.5, 2, -2, -0.5, 2, 2, -0.5, -2, -2, -0.5, 2, 2, -0.5, -2, 2, -0.5, -2, -2, 0.5, 2, 2, -0.5, 2, 2, 0.5, 2, -2, -0.5, 2, 2, -0.5, 2, -2, 0.5, 2, -2, -0.5, -2, 2, 0.5, -2, 2, -0.5, -2, -2, 0.5, -2, 2, 0.5, -2, -2, -0.5, -2, -2 )
+
+[sub_resource type="GDScript" id=13]
+resource_name = "interact w trash"
+script/source = "extends Area
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="CylinderShape" id=12]
 
 [sub_resource type="SpatialMaterial" id=8]
 flags_unshaded = true
@@ -148,6 +170,13 @@ shape = SubResource( 5 )
 [node name="garbage_can" parent="level assets" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77068, 0.5, -7.72329 )
 
+[node name="Area" type="Area" parent="level assets/garbage_can"]
+script = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="level assets/garbage_can/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775136, 0 )
+shape = SubResource( 12 )
+
 [node name="minimap elements" type="Spatial" parent="."]
 
 [node name="bottom" type="MeshInstance" parent="minimap elements"]
@@ -167,7 +196,7 @@ transform = Transform( 0.86314, 0.399615, -0.308702, 0, 0.611334, 0.791373, 0.50
 light_energy = 0.9
 shadow_enabled = true
 directional_shadow_blend_splits = true
-directional_shadow_max_distance = 70.0
+directional_shadow_max_distance = 50.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
