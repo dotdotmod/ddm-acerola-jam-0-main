@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/native/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/native/scripts/camera_system.gd" type="Script" id=2]
 [ext_resource path="res://assets/import/images/ui/map_mask.png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/native/scripts/pause_screen.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -41,6 +43,157 @@ Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 Label/constants/shadow_as_outline = 2
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/textbox:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/textbox:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 268 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/textbox:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UI/minimap:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 744, 316 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UI/guide:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 553 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UI/textbox:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "open_text_box"
+length = 0.21
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/textbox:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 0.378929 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/textbox:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.297302, 0.196146 ),
+"update": 0,
+"values": [ Vector2( 0, 500 ), Vector2( 0, 268 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/textbox:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 0.297302 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UI/minimap:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 744, 316 ), Vector2( 1064, 619 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UI/guide:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 553 ), Vector2( 0, 620 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UI/textbox:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.00576089 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="player" type="KinematicBody" groups=["Player"]]
 script = ExtResource( 1 )
@@ -90,8 +243,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -280.0
 margin_top = -284.0
-margin_right = -39.0
-margin_bottom = -45.0
+margin_right = -39.0029
+margin_bottom = -45.0002
 
 [node name="ViewportContainer" type="ViewportContainer" parent="UI_elements/UI/minimap"]
 material = SubResource( 6 )
@@ -104,15 +257,15 @@ handle_input_locally = false
 fxaa = true
 render_target_update_mode = 3
 
-[node name="minimap elements" type="Spatial" parent="UI_elements/UI/minimap/ViewportContainer/Viewport"]
+[node name="minimap_elements" type="Spatial" parent="UI_elements/UI/minimap/ViewportContainer/Viewport"]
 
-[node name="minimap camera" type="Camera" parent="UI_elements/UI/minimap/ViewportContainer/Viewport/minimap elements"]
+[node name="minimap_camera" type="Camera" parent="UI_elements/UI/minimap/ViewportContainer/Viewport/minimap_elements"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0 )
 cull_mask = 2
 projection = 1
-size = 30.0
+size = 40.0
 
-[node name="MeshInstance" type="MeshInstance" parent="UI_elements/UI/minimap/ViewportContainer/Viewport/minimap elements"]
+[node name="MeshInstance" type="MeshInstance" parent="UI_elements/UI/minimap/ViewportContainer/Viewport/minimap_elements"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.59736, 0 )
 layers = 2
 cast_shadow = 0
@@ -136,26 +289,77 @@ theme = SubResource( 7 )
 text = "Uhhhhhhhhhhhhhh yeah text cool"
 
 [node name="textbox" type="Control" parent="UI_elements/UI"]
-anchor_right = 1.0
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = 268.0
+margin_left = -512.0
+margin_top = -332.0
+margin_right = 512.0
+margin_bottom = -0.00012207
 
-[node name="TextureRect" type="TextureRect" parent="UI_elements/UI/textbox"]
+[node name="text_box_rect" type="ColorRect" parent="UI_elements/UI/textbox"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 168.0
-margin_top = -203.0
-margin_right = -29.0
-margin_bottom = -22.0
+margin_left = 100.0
+margin_top = -211.0
+margin_right = -97.0
+margin_bottom = -30.0
+color = Color( 0.133333, 0.133333, 0.133333, 0.631373 )
+
+[node name="text" type="RichTextLabel" parent="UI_elements/UI/textbox/text_box_rect"]
+margin_left = 38.0
+margin_top = 26.0
+margin_right = 784.0
+margin_bottom = 153.0
+visible_characters = 0
+text = "bro  whys my text not WORKIN"
+
+[node name="portrait" type="TextureRect" parent="UI_elements/UI/textbox"]
+show_behind_parent = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 29.0
+margin_top = -419.999
+margin_right = 383.0
+margin_bottom = -23.9994
+texture = ExtResource( 4 )
+expand = true
 
 [node name="interact" type="Control" parent="UI_elements/UI"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -40.0
-margin_right = 20.0
+margin_left = -123.0
+margin_top = -175.0
+margin_right = 123.0
+margin_bottom = -135.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI_elements/UI/interact"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="UI_elements/UI/interact/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="UI_elements/UI/interact/HBoxContainer"]
+margin_left = 68.0
+margin_top = 25.0
+margin_right = 118.0
+margin_bottom = 39.0
+text = "Interact"
+align = 1
+
+[node name="ui_animations" type="AnimationPlayer" parent="UI_elements"]
+anims/RESET = SubResource( 9 )
+anims/open_text_box = SubResource( 8 )
 
 [node name="Pause_screen" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 2
+script = ExtResource( 5 )

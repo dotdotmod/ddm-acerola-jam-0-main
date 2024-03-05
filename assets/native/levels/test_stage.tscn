@@ -28,19 +28,16 @@ resource_name = "interact w trash"
 script/source = "extends Area
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
+var interaction
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func interact():
+	if not interaction == null:
+		interaction.open_text_box(false, \"yoooooooooooooooooooooooooo plz work\", true)
+		
 "
 
 [sub_resource type="CylinderShape" id=12]
@@ -170,7 +167,7 @@ shape = SubResource( 5 )
 [node name="garbage_can" parent="level assets" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77068, 0.5, -7.72329 )
 
-[node name="Area" type="Area" parent="level assets/garbage_can"]
+[node name="Area" type="Area" parent="level assets/garbage_can" groups=["Interactable"]]
 script = SubResource( 13 )
 
 [node name="CollisionShape" type="CollisionShape" parent="level assets/garbage_can/Area"]
