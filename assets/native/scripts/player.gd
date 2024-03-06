@@ -40,10 +40,13 @@ func open_text_box(with_portrait:bool, text:String, disable_move:bool):
 	disable_movement = disable_move
 
 func update_text_box(new_text:String):
-	text_box_text = new_text
+	text_box_text.text = new_text
 	text_box_text.visible_characters = 0
 
 func close_text_box():
+	text_box_open = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	disable_movement = false
 	ui_animation_player.play_backwards("open_text_box")
 
 #Main loop
@@ -61,7 +64,7 @@ func _physics_process(delta):
 	
 	#Interacting with stuff
 	if interact_ray.is_colliding():
-		if interact_ray.get_collider().is_in_group("Interactable"):
+		if interact_ray.get_collider().is_in_group("Interactable") and disable_movement == false:
 			interactability_indicator.visible = true
 			if Input.is_action_just_pressed("interact"):
 				interact_ray.get_collider().interact()

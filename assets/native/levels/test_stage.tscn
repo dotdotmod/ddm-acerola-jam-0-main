@@ -28,15 +28,40 @@ resource_name = "interact w trash"
 script/source = "extends Area
 
 
+#YAAYYYYY IT WORK
+
 var interaction
+var text_amount = 4
+var text_box_open := false
 
 func _ready():
 	pass # Replace with function body.
+
+func update_text():
+	if text_amount == 4:
+		interaction.update_text_box(\"this finally works pog\")
+	elif text_amount == 3:
+		interaction.update_text_box(\"am so happi\")
+	elif text_amount == 2:
+		interaction.update_text_box(\"it finally wok\")
+	elif text_amount == 1:
+		interaction.update_text_box(\"i spent sooo much time on this\")
+	elif text_amount == 0:
+		interaction.close_text_box()
+		text_box_open = false
+	text_amount -= 1
+
+func _process(delta):
+	if Input.is_action_just_pressed(\"interact\") and text_box_open == true:
+		update_text()
+	
 
 
 func interact():
 	if not interaction == null:
 		interaction.open_text_box(false, \"yoooooooooooooooooooooooooo plz work\", true)
+		text_amount = 4
+		text_box_open = true
 		
 "
 
