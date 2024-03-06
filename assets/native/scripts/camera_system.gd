@@ -26,6 +26,12 @@ func _input(event):
 		h -= event.relative.x * h_sensitivity
 
 func _process(delta):
+	#
+	if get_parent().disable_movement == true:
+		camera_mode = "NONE"
+	else:
+		camera_mode = "Manual"
+	
 	match camera_mode:
 		"Manual":
 			camera.set_as_toplevel(false)

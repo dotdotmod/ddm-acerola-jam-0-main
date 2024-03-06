@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/import/models/obj/test_miko/miko model3.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/import/models/obj/test_miko/miko model3 2.obj" type="ArrayMesh" id=2]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 1, 1, 1, 1 )
@@ -20,3 +21,7 @@ shadow_color = Color( 0.364706, 0.215686, 0.215686, 1 )
 directional_shadow_mode = 1
 directional_shadow_split_1 = 0.029
 directional_shadow_blend_splits = true
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1117, 0, 0 )
+mesh = ExtResource( 2 )
