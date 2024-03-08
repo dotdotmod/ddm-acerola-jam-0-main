@@ -13,6 +13,9 @@ var velocity : Vector3
 var gravity_calc : float
 var text_box_open : bool
 
+#Inventory
+var inventory := {"Special Rock":0}
+
 #ALL the onready stuff
 onready var camera = $camera_system/camera_pivot/Camera
 onready var camera_core = $camera_system
@@ -24,6 +27,10 @@ onready var ui_animation_player = $UI_elements/ui_animations
 onready var text_box_chara_portrait = $UI_elements/UI/textbox/portrait
 onready var text_box_text = $UI_elements/UI/textbox/text_box_rect/text
 onready var interactability_indicator = $UI_elements/UI/interact/HBoxContainer
+
+#Simple respawn function
+func respawn():
+	global_translation = get_node("../Spawnpoint/").global_translation
 
 #Text box
 func open_text_box(with_portrait:bool, text:String, disable_move:bool):
@@ -110,10 +117,7 @@ func _process(delta):
 	#Minimap stuff
 	minimap_elements.global_translation = global_translation
 	minimap_camera_element.global_rotation.y = camera.global_rotation.y
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
+
 	#Text box ui stuff
 	if text_box_open:
 		text_box_text.visible_characters += ceil(1 * delta)

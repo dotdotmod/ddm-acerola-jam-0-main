@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/native/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/native/scripts/camera_system.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/native/scripts/pause_screen.gd" type="Script" id=5]
 [ext_resource path="res://assets/native/themes/generic_type.tres" type="Theme" id=6]
 [ext_resource path="res://assets/import/images/ui/button_icons/dualshock-circle.svg" type="Texture" id=7]
+[ext_resource path="res://assets/native/scripts/ui_elements.gd" type="Script" id=8]
+[ext_resource path="res://assets/import/images/ui/button_icons/dualshock-cross.svg" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -218,6 +220,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.453962, -0.497042 )
 enabled = true
 cast_to = Vector3( 0, -1.5, -1.25 )
 collide_with_areas = true
+debug_shape_custom_color = Color( 0.219608, 1, 0, 1 )
+debug_shape_thickness = 3
 
 [node name="camera_system" type="Spatial" parent="."]
 script = ExtResource( 2 )
@@ -229,10 +233,12 @@ margin = 0.5
 
 [node name="Camera" type="Camera" parent="camera_system/camera_pivot"]
 cull_mask = 1048573
+current = true
 near = 0.04
 far = 8192.0
 
 [node name="UI_elements" type="CanvasLayer" parent="."]
+script = ExtResource( 8 )
 
 [node name="UI" type="Control" parent="UI_elements"]
 anchor_right = 1.0
@@ -286,7 +292,7 @@ anchor_bottom = 1.0
 [node name="MarginContainer" type="MarginContainer" parent="UI_elements/UI/guide/HBoxContainer"]
 margin_bottom = 47.0
 
-[node name="TextureRect" type="TextureRect" parent="UI_elements/UI/guide/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI_elements/UI/guide/HBoxContainer" groups=["Controls Button"]]
 margin_left = 4.0
 margin_right = 44.0
 margin_bottom = 47.0
@@ -353,17 +359,21 @@ margin_bottom = -135.0
 [node name="HBoxContainer" type="HBoxContainer" parent="UI_elements/UI/interact"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 27.0
+margin_top = -1.0
+margin_right = -76.0
 
-[node name="TextureRect" type="TextureRect" parent="UI_elements/UI/interact/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-texture = ExtResource( 4 )
+[node name="TextureRect" type="TextureRect" parent="UI_elements/UI/interact/HBoxContainer" groups=["Controls Button"]]
+margin_right = 40.0
+margin_bottom = 41.0
+texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="UI_elements/UI/interact/HBoxContainer"]
-margin_left = 68.0
-margin_top = 25.0
-margin_right = 118.0
-margin_bottom = 39.0
+margin_left = 44.0
+margin_top = 9.0
+margin_right = 125.0
+margin_bottom = 32.0
+theme = ExtResource( 6 )
 text = "Interact"
 align = 1
 
@@ -374,4 +384,22 @@ anims/open_text_box = SubResource( 8 )
 [node name="Pause_screen" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 2
+visible = false
 script = ExtResource( 5 )
+
+[node name="pause" type="Control" parent="Pause_screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="background" type="ColorRect" parent="Pause_screen/pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.545098 )
+
+[node name="options" type="Control" parent="Pause_screen/pause"]
+anchor_bottom = 1.0
+margin_right = 525.0
+
+[node name="debug items" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 10

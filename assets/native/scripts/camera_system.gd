@@ -20,17 +20,12 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and get_parent().disable_movement == false:
 		v -= event.relative.y * v_sensitivity
 		v = clamp(v, -40, 40)
 		h -= event.relative.x * h_sensitivity
 
 func _process(delta):
-	#
-	if get_parent().disable_movement == true:
-		camera_mode = "NONE"
-	else:
-		camera_mode = "Manual"
 	
 	match camera_mode:
 		"Manual":
