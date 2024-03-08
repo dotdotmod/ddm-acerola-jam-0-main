@@ -16,7 +16,7 @@ radius = 0.5
 [sub_resource type="SpatialMaterial" id=10]
 distance_fade_mode = 2
 distance_fade_min_distance = 0.0
-distance_fade_max_distance = 2.0
+distance_fade_max_distance = 1.5
 
 [sub_resource type="CapsuleMesh" id=1]
 material = SubResource( 10 )
@@ -261,6 +261,7 @@ anchor_bottom = 1.0
 
 [node name="Viewport" type="Viewport" parent="UI_elements/UI/minimap/ViewportContainer"]
 size = Vector2( 240, 240 )
+transparent_bg = true
 handle_input_locally = false
 fxaa = true
 render_target_update_mode = 3

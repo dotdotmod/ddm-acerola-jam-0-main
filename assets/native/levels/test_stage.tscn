@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/native/character/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/native/drag_n_drops/garbage_can.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/native/drag_n_drops/door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/native/character/enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -16,6 +17,20 @@ size = Vector3( 20, 1, 20 )
 
 [sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( -10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10 )
+
+[sub_resource type="CubeMesh" id=20]
+material = SubResource( 1 )
+size = Vector3( 5, 1, 30 )
+
+[sub_resource type="ConcavePolygonShape" id=21]
+data = PoolVector3Array( -2.5, 0.5, 15, 2.5, 0.5, 15, -2.5, -0.5, 15, 2.5, 0.5, 15, 2.5, -0.5, 15, -2.5, -0.5, 15, 2.5, 0.5, -15, -2.5, 0.5, -15, 2.5, -0.5, -15, -2.5, 0.5, -15, -2.5, -0.5, -15, 2.5, -0.5, -15, 2.5, 0.5, 15, 2.5, 0.5, -15, 2.5, -0.5, 15, 2.5, 0.5, -15, 2.5, -0.5, -15, 2.5, -0.5, 15, -2.5, 0.5, -15, -2.5, 0.5, 15, -2.5, -0.5, -15, -2.5, 0.5, 15, -2.5, -0.5, 15, -2.5, -0.5, -15, 2.5, 0.5, 15, -2.5, 0.5, 15, 2.5, 0.5, -15, -2.5, 0.5, 15, -2.5, 0.5, -15, 2.5, 0.5, -15, -2.5, -0.5, 15, 2.5, -0.5, 15, -2.5, -0.5, -15, 2.5, -0.5, 15, 2.5, -0.5, -15, -2.5, -0.5, -15 )
+
+[sub_resource type="CubeMesh" id=22]
+material = SubResource( 1 )
+size = Vector3( 30, 1, 30 )
+
+[sub_resource type="ConcavePolygonShape" id=23]
+data = PoolVector3Array( -15, 0.5, 15, 15, 0.5, 15, -15, -0.5, 15, 15, 0.5, 15, 15, -0.5, 15, -15, -0.5, 15, 15, 0.5, -15, -15, 0.5, -15, 15, -0.5, -15, -15, 0.5, -15, -15, -0.5, -15, 15, -0.5, -15, 15, 0.5, 15, 15, 0.5, -15, 15, -0.5, 15, 15, 0.5, -15, 15, -0.5, -15, 15, -0.5, 15, -15, 0.5, -15, -15, 0.5, 15, -15, -0.5, -15, -15, 0.5, 15, -15, -0.5, 15, -15, -0.5, -15, 15, 0.5, 15, -15, 0.5, 15, 15, 0.5, -15, -15, 0.5, 15, -15, 0.5, -15, 15, 0.5, -15, -15, -0.5, 15, 15, -0.5, 15, -15, -0.5, -15, 15, -0.5, 15, 15, -0.5, -15, -15, -0.5, -15 )
 
 [sub_resource type="CubeMesh" id=4]
 size = Vector3( 1, 4, 4 )
@@ -95,15 +110,6 @@ func _on_Area_body_entered(body):
 [sub_resource type="BoxShape" id=14]
 extents = Vector3( 1000, 1, 1000 )
 
-[sub_resource type="SpatialMaterial" id=8]
-flags_unshaded = true
-params_cull_mode = 2
-albedo_color = Color( 0.054902, 0.054902, 0.054902, 1 )
-
-[sub_resource type="QuadMesh" id=9]
-material = SubResource( 8 )
-size = Vector2( 200, 200 )
-
 [sub_resource type="SpatialMaterial" id=10]
 flags_unshaded = true
 albedo_color = Color( 0.176471, 0.941176, 0, 1 )
@@ -127,6 +133,20 @@ background_sky = SubResource( 7 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 0.3
 ambient_light_sky_contribution = 0.5
+
+[sub_resource type="NavigationMesh" id=19]
+vertices = PoolVector3Array( -23.2724, 2.52406, 3.29614, -23.2724, 2.52406, 10.5461, -16.0224, 2.52406, 10.5461, -1.52235, 2.52406, 10.5461, 5.72765, 2.52406, 10.5461, 5.72765, 2.52406, 3.29614, 5.72765, 2.52406, -11.2039, 5.72765, 2.52406, -18.4539, -1.52235, 2.52406, -18.4539, -16.0224, 2.52406, -18.4539, -23.2724, 2.52406, -18.4539, -23.2724, 2.52406, -11.2039, -23.2724, 2.52406, -3.95386, -23.2724, 2.52406, 3.29614, -16.0224, 2.52406, 10.5461, -8.77235, 2.52406, 10.5461, -1.52235, 2.52406, 10.5461, 5.72765, 2.52406, 3.29614, 5.72765, 2.52406, -3.95386, 5.72765, 2.52406, -11.2039, -1.52235, 2.52406, -18.4539, -8.77235, 2.52406, -18.4539, -8.77235, 2.52406, -18.4539, -16.0224, 2.52406, -18.4539, -23.2724, 2.52406, -11.2039, -23.2724, 2.52406, -3.95386, 5.72765, 2.52406, -3.95386, -8.77235, 2.52406, -18.4539, -23.2724, 2.52406, -3.95386, -16.0224, 2.52406, 10.5461, -8.77235, 2.52406, 10.5461, 5.72765, 2.52406, 3.29614 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 14, 13, 12 ), PoolIntArray( 17, 16, 15 ), PoolIntArray( 19, 18, 20 ), PoolIntArray( 20, 18, 21 ), PoolIntArray( 23, 22, 24 ), PoolIntArray( 24, 22, 25 ), PoolIntArray( 31, 30, 26 ), PoolIntArray( 26, 30, 29 ), PoolIntArray( 26, 29, 28 ), PoolIntArray( 26, 28, 27 ) ]
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+
+[sub_resource type="CubeMesh" id=17]
+material = SubResource( 18 )
+size = Vector3( 30, 1, 30 )
+
+[sub_resource type="ConcavePolygonShape" id=24]
+data = PoolVector3Array( -15, 0.5, 15, 15, 0.5, 15, -15, -0.5, 15, 15, 0.5, 15, 15, -0.5, 15, -15, -0.5, 15, 15, 0.5, -15, -15, 0.5, -15, 15, -0.5, -15, -15, 0.5, -15, -15, -0.5, -15, 15, -0.5, -15, 15, 0.5, 15, 15, 0.5, -15, 15, -0.5, 15, 15, 0.5, -15, 15, -0.5, -15, 15, -0.5, 15, -15, 0.5, -15, -15, 0.5, 15, -15, -0.5, -15, -15, 0.5, 15, -15, -0.5, 15, -15, -0.5, -15, 15, 0.5, 15, -15, 0.5, 15, 15, 0.5, -15, -15, 0.5, 15, -15, 0.5, -15, 15, 0.5, -15, -15, -0.5, 15, 15, -0.5, 15, -15, -0.5, -15, 15, -0.5, 15, 15, -0.5, -15, -15, -0.5, -15 )
 
 [node name="test_stage" type="Spatial"]
 
@@ -168,6 +188,26 @@ skeleton = NodePath("../../..")
 
 [node name="CollisionShape" type="CollisionShape" parent="level geometry/level terrain/MeshInstance3/StaticBody"]
 shape = SubResource( 3 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="level geometry/level terrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4414, 1.57418, -48 )
+mesh = SubResource( 20 )
+skeleton = NodePath("../../..")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level terrain/MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level terrain/MeshInstance4/StaticBody"]
+shape = SubResource( 21 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="level geometry/level terrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4414, 1.57418, -78 )
+mesh = SubResource( 22 )
+skeleton = NodePath("../../..")
+
+[node name="StaticBody" type="StaticBody" parent="level geometry/level terrain/MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="level geometry/level terrain/MeshInstance5/StaticBody"]
+shape = SubResource( 23 )
 
 [node name="level etc" type="Spatial" parent="level geometry"]
 
@@ -245,12 +285,6 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.333
 
 [node name="minimap elements" type="Spatial" parent="."]
 
-[node name="bottom" type="MeshInstance" parent="minimap elements"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -29.8199, 0 )
-layers = 2
-cast_shadow = 0
-mesh = SubResource( 9 )
-
 [node name="MeshInstance" type="MeshInstance" parent="minimap elements"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75449, 1.1243, -7.73532 )
 layers = 2
@@ -273,6 +307,30 @@ shape = SubResource( 16 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0592084, 3.37097, -9.90088 )
 shape = SubResource( 16 )
 
+[node name="enemies" type="Spatial" parent="."]
+
+[node name="path" type="Spatial" parent="enemies"]
+
+[node name="path0" type="Spatial" parent="enemies/path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -49.1289, 9.53674e-07, -27.4674 )
+
+[node name="0" type="Spatial" parent="enemies/path/path0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6152, 2.84987, 8.43721 )
+
+[node name="1" type="Spatial" parent="enemies/path/path0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6152, 2.84987, -7.48391 )
+
+[node name="2" type="Spatial" parent="enemies/path/path0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61765, 2.84987, -7.48391 )
+
+[node name="3" type="Spatial" parent="enemies/path/path0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61765, 2.84987, 8.18703 )
+
+[node name="enemy" type="Spatial" parent="enemies"]
+
+[node name="enemy" parent="enemies/enemy" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.3445, 3.22186, -20.0478 )
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.86314, 0.399615, -0.308702, 0, 0.611334, 0.791373, 0.504965, -0.683066, 0.527667, 0, 0, 0 )
 light_energy = 0.9
@@ -282,5 +340,18 @@ directional_shadow_max_distance = 50.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5836, 0, -24.2769 )
+navmesh = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.77235, 1.52406, -3.95386 )
+mesh = SubResource( 17 )
+
+[node name="StaticBody" type="StaticBody" parent="NavigationMeshInstance/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="NavigationMeshInstance/MeshInstance/StaticBody"]
+shape = SubResource( 24 )
 
 [connection signal="body_entered" from="level assets/Area" to="level assets/Area" method="_on_Area_body_entered"]

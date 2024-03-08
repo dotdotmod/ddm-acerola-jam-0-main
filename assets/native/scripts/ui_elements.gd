@@ -4,13 +4,18 @@ extends CanvasLayer
 #Base Input device class
 var input_device : String
 
+onready var ui_animplayer = $ui_animations
+
+func _ready():
+	ui_animplayer.play("RESET")
+
 func _input(event):
 	if event is InputEventJoypadButton:
 		input_device = Input.get_joy_name(0)
 	elif event is InputEventKey:
 		input_device = "Mouse and Keyboard"
 
-func _process(delta):
+func _process(_delta):
 	#
 	match input_device:
 		"PS3 Controller":
@@ -33,4 +38,7 @@ func _process(delta):
 			pass
 		"Xbox Series X Controller":
 			pass
+		"Nintendo Switch Pro Controller":
+			pass
+	
 
