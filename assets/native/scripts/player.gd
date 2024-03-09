@@ -13,8 +13,9 @@ var velocity : Vector3
 var gravity_calc : float
 var text_box_open : bool
 
-#Inventory
+#Other stuff
 var inventory := {"Special Rock":0}
+var crouching : bool
 
 #ALL the onready stuff
 onready var camera = $camera_system/camera_pivot/Camera
@@ -31,6 +32,10 @@ onready var interactability_indicator = $UI_elements/UI/interact/HBoxContainer
 #Simple respawn function
 func respawn():
 	global_translation = get_node("../Spawnpoint/").global_translation
+
+#Crouching function
+func crouch():
+	crouching = not crouching
 
 #Text box
 func open_text_box(with_portrait:bool, text:String, disable_move:bool):
@@ -86,6 +91,9 @@ func _physics_process(delta):
 		active_speed = final_input.length() + run_speed
 	else:
 		active_speed = final_input.length() + walk_speed
+	
+	if Input.is_action_just_pressed("crouch"):
+		crouch()
 	
 	#Final active speed
 	final_active_speed = lerp(final_active_speed, active_speed, 0.2)
