@@ -4,6 +4,7 @@ extends KinematicBody
 #Params
 var walk_speed := 5.0
 var run_speed := 12.0
+var crouch_speed
 var model_angular_speed := 0.25
 var disable_movement := false
 

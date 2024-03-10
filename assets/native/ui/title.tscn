@@ -1,5 +1,199 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/native/themes/generic_type.tres" type="Theme" id=1]
+[ext_resource path="res://assets/import/images/ui/button_icons/dualshock-cross.svg" type="Texture" id=2]
+[ext_resource path="res://assets/import/images/ui/button_icons/dualshock-triangle.svg" type="Texture" id=3]
+[ext_resource path="res://assets/native/scripts/title_screen.gd" type="Script" id=4]
 
 [node name="title" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="options" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -391.0
+
+[node name="the_options" type="VBoxContainer" parent="options"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 34.0
+margin_top = -171.0
+margin_right = -24.0
+margin_bottom = -8.0
+
+[node name="start" type="Button" parent="options/the_options"]
+margin_right = 333.0
+margin_bottom = 27.0
+theme = ExtResource( 1 )
+text = "Start Game"
+
+[node name="options" type="Button" parent="options/the_options"]
+margin_top = 31.0
+margin_right = 333.0
+margin_bottom = 58.0
+theme = ExtResource( 1 )
+text = "Options"
+
+[node name="credits" type="Button" parent="options/the_options"]
+margin_top = 62.0
+margin_right = 333.0
+margin_bottom = 89.0
+theme = ExtResource( 1 )
+text = "Credits"
+
+[node name="quit" type="Button" parent="options/the_options"]
+margin_top = 93.0
+margin_right = 333.0
+margin_bottom = 120.0
+theme = ExtResource( 1 )
+text = "Quit Game"
+
+[node name="title_and_guide" type="Control" parent="."]
+anchor_bottom = 1.0
+margin_right = 636.0
+
+[node name="guide" type="HBoxContainer" parent="title_and_guide"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -44.0
+
+[node name="confirm" type="HBoxContainer" parent="title_and_guide/guide"]
+margin_right = 128.0
+margin_bottom = 44.0
+
+[node name="icon" type="TextureRect" parent="title_and_guide/guide/confirm"]
+margin_right = 40.0
+margin_bottom = 44.0
+texture = ExtResource( 2 )
+
+[node name="text" type="Label" parent="title_and_guide/guide/confirm"]
+margin_left = 44.0
+margin_top = 10.0
+margin_right = 128.0
+margin_bottom = 33.0
+theme = ExtResource( 1 )
+text = "Confirm"
+
+[node name="warnings" type="HBoxContainer" parent="title_and_guide/guide"]
+margin_left = 132.0
+margin_right = 471.0
+margin_bottom = 44.0
+
+[node name="icon" type="TextureRect" parent="title_and_guide/guide/warnings"]
+margin_right = 40.0
+margin_bottom = 44.0
+texture = ExtResource( 3 )
+
+[node name="text" type="Label" parent="title_and_guide/guide/warnings"]
+margin_left = 44.0
+margin_top = 10.0
+margin_right = 339.0
+margin_bottom = 33.0
+theme = ExtResource( 1 )
+text = "Health and Safety Warnings"
+
+[node name="title" type="Control" parent="title_and_guide"]
+margin_right = 572.0
+margin_bottom = 303.0
+
+[node name="health_and_safety_warnings" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="settings" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -443.0
+
+[node name="ColorRect" type="ColorRect" parent="settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.709804 )
+
+[node name="optionss" type="VBoxContainer" parent="settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = 135.0
+margin_right = -16.0
+
+[node name="video" type="HBoxContainer" parent="settings/optionss"]
+margin_right = 409.0
+margin_bottom = 23.0
+
+[node name="video" type="Label" parent="settings/optionss/video"]
+margin_right = 191.0
+margin_bottom = 23.0
+theme = ExtResource( 1 )
+text = "--Video Settings--"
+
+[node name="resolution" type="HBoxContainer" parent="settings/optionss"]
+margin_top = 27.0
+margin_right = 409.0
+margin_bottom = 50.0
+
+[node name="video" type="Label" parent="settings/optionss/resolution"]
+margin_right = 265.0
+margin_bottom = 23.0
+theme = ExtResource( 1 )
+text = "Internal Resolution : 720p"
+
+[node name="resolution_opt" type="HBoxContainer" parent="settings/optionss"]
+margin_top = 54.0
+margin_right = 409.0
+margin_bottom = 81.0
+
+[node name="600p" type="Button" parent="settings/optionss/resolution_opt"]
+margin_right = 81.0
+margin_bottom = 27.0
+theme = ExtResource( 1 )
+text = "  600p  "
+
+[node name="720p" type="Button" parent="settings/optionss/resolution_opt"]
+margin_left = 85.0
+margin_right = 164.0
+margin_bottom = 27.0
+theme = ExtResource( 1 )
+text = "  720p  "
+
+[node name="900p" type="Button" parent="settings/optionss/resolution_opt"]
+margin_left = 168.0
+margin_right = 249.0
+margin_bottom = 27.0
+theme = ExtResource( 1 )
+text = "  900p  "
+
+[node name="1080p" type="Button" parent="settings/optionss/resolution_opt"]
+margin_left = 253.0
+margin_right = 342.0
+margin_bottom = 27.0
+theme = ExtResource( 1 )
+text = "  1080p  "
+
+[node name="fullscreen" type="HBoxContainer" parent="settings/optionss"]
+margin_top = 85.0
+margin_right = 409.0
+margin_bottom = 108.0
+
+[node name="fullscreen" type="Label" parent="settings/optionss/fullscreen"]
+margin_right = 165.0
+margin_bottom = 23.0
+theme = ExtResource( 1 )
+text = "Fullscreen : OFF"
+
+[node name="fullscreen_opt" type="HBoxContainer" parent="settings/optionss"]
+margin_top = 112.0
+margin_right = 409.0
+margin_bottom = 148.0
+
+[node name="fullscreen" type="CheckButton" parent="settings/optionss/fullscreen_opt"]
+margin_right = 252.0
+margin_bottom = 36.0
+theme = ExtResource( 1 )
+text = "  Fullscreen mode"

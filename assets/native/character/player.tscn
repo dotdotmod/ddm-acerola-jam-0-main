@@ -345,10 +345,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -280.0
-margin_top = -284.0
-margin_right = -39.0029
-margin_bottom = -45.0002
+margin_left = 744.0
+margin_top = 316.0
+margin_right = 984.997
+margin_bottom = 555.0
 
 [node name="ViewportContainer" type="ViewportContainer" parent="UI_elements/UI/minimap"]
 material = SubResource( 6 )
@@ -379,8 +379,9 @@ mesh = SubResource( 3 )
 [node name="guide" type="Control" parent="UI_elements/UI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -47.0
+margin_top = 553.0
 margin_right = 765.0
+margin_bottom = 600.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI_elements/UI/guide"]
 anchor_right = 1.0
@@ -409,10 +410,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -512.0
-margin_top = -332.0
-margin_right = 512.0
-margin_bottom = -0.00012207
+margin_top = 268.0
+margin_right = 1024.0
+margin_bottom = 600.0
 
 [node name="text_box_rect" type="ColorRect" parent="UI_elements/UI/textbox"]
 anchor_top = 1.0
@@ -506,7 +506,7 @@ anchor_bottom = 1.0
 margin_left = 49.0
 margin_top = 352.0
 margin_right = 366.0
-margin_bottom = -105.0
+margin_bottom = 1095.0
 
 [node name="upause" type="Button" parent="Pause_screen/pause/options/pause_options"]
 margin_right = 317.0
